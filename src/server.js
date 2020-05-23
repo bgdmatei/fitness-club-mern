@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
-const RegisterController = require("./controllers/RegisterController");
+const UserController = require("./controllers/UserController");
 
 const PORT = process.env.PORT || 8000;
 
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.send("Hello from express");
 });
 
-app.post("/register", RegisterController.store);
+app.post("/register", UserController.store);
 
 try {
   mongoose.connect(process.env.MONGO_DB_CONNECTION, {
