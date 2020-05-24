@@ -11,6 +11,8 @@ app.get("/", (req, res) => {
   res.send("Hello from express");
 });
 
+app.post("/register", UserController.store);
+
 try {
   mongoose.connect(process.env.MONGO_DB_CONNECTION, {
     useNewUrlParser: true,
