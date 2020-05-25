@@ -3,7 +3,7 @@ const User = require("../models/User");
 
 module.exports = {
   async createEvent(req, res) {
-    const { title, description, price } = req.body;
+    const { title, description, price, sport } = req.body;
     const { user_id } = req.headers;
     const { filename } = req.file;
 
@@ -16,6 +16,7 @@ module.exports = {
     const event = await Event.create({
       title,
       description,
+      sport,
       price: parseFloat(price),
       user: user_id,
       thumbnail: filename,
@@ -23,16 +24,13 @@ module.exports = {
     return res.json(event);
   },
 
-  async getEventById(req, res) {
+  async delete(req, res) {
     const { eventId } = req.params;
-
     try {
-      const event = await Event.findById(eventId);
-      if (event) {
-        return res.json(event);
-      }
+      await Event.findByIdAndDelete(eventId);
+      return res.status(204).send();
     } catch (error) {
-      return res.status(400).json({ message: "Event does not exist" });
+      return res.status(400).json({ message: "Couldn't find event!" });
     }
   },
 };
