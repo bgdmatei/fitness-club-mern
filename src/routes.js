@@ -4,6 +4,7 @@ const multer = require("multer");
 const UserController = require("./controllers/UserController");
 const EventController = require("./controllers/EventController");
 const DashboardController = require("./controllers/DashboardController");
+const LoginControllers = require("./controllers/LoginController");
 const uploadConfig = require("./config/upload");
 
 const routes = express.Router();
@@ -12,6 +13,9 @@ const upload = multer(uploadConfig);
 routes.get("/", (req, res) => {
   res.send("Hello from express");
 });
+
+//Login
+routes.post("/login", LoginControllers.store);
 
 // Dashboard
 routes.get("/dashboard/:sport", DashboardController.getAllEvents);
