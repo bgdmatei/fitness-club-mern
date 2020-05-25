@@ -20,7 +20,7 @@ const EventSchema = new mongoose.Schema(
 );
 
 EventSchema.virtual("thumbnail_url").get(function () {
-  `http://localhost:8000/files/${this.thumbnail}`;
+  return `http://localhost:8000/files/${this.thumbnail}`;
 });
 
 module.exports = mongoose.model("Event", EventSchema);

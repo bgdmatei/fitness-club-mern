@@ -22,4 +22,17 @@ module.exports = {
     });
     return res.json(event);
   },
+
+  async getEventById(req, res) {
+    const { eventId } = req.params;
+
+    try {
+      const event = await Event.findById(eventId);
+      if (event) {
+        return res.json(event);
+      }
+    } catch (error) {
+      return res.status(400).json({ message: "Event does not exist" });
+    }
+  },
 };
