@@ -5,6 +5,7 @@ const UserController = require("./controllers/UserController");
 const EventController = require("./controllers/EventController");
 const DashboardController = require("./controllers/DashboardController");
 const LoginControllers = require("./controllers/LoginController");
+const RegistrationController = require("./controllers/RegistrationController");
 const uploadConfig = require("./config/upload");
 
 const routes = express.Router();
@@ -13,6 +14,9 @@ const upload = multer(uploadConfig);
 routes.get("/", (req, res) => {
   res.send("Hello from express");
 });
+
+// Registration
+routes.post("/registration/:eventId", RegistrationController.create);
 
 //Login
 routes.post("/login", LoginControllers.store);
