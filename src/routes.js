@@ -16,6 +16,10 @@ routes.get("/", (req, res) => {
 });
 
 // Registration
+routes.get(
+  "/registration/:registration_id",
+  RegistrationController.getRegistration
+);
 routes.post("/registration/:eventId", RegistrationController.create);
 
 //Login
