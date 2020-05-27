@@ -6,6 +6,8 @@ const EventController = require("./controllers/EventController");
 const DashboardController = require("./controllers/DashboardController");
 const LoginControllers = require("./controllers/LoginController");
 const RegistrationController = require("./controllers/RegistrationController");
+const ApprovalController = require("./controllers/ApprovalController");
+const RejectionController = require("./controllers/RejectionController");
 const uploadConfig = require("./config/upload");
 
 const routes = express.Router();
@@ -21,6 +23,14 @@ routes.get(
   RegistrationController.getRegistration
 );
 routes.post("/registration/:eventId", RegistrationController.create);
+routes.post(
+  "/registration/:registration_id/approvals",
+  ApprovalController.approval
+);
+routes.post(
+  "/registration/:registration_id/rejections",
+  RejectionController.rejection
+);
 
 //Login
 routes.post("/login", LoginControllers.store);
