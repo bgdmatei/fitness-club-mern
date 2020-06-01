@@ -1,5 +1,4 @@
 const Event = require("../models/Event");
-const User = require("../models/User");
 
 module.exports = {
   async getEventById(req, res) {
@@ -17,7 +16,7 @@ module.exports = {
 
   async getAllEvents(req, res) {
     const { sport } = req.params;
-    const query = { sport } || {};
+    const query = sport ? { sport } : {};
     try {
       const events = await Event.find(query);
       if (events) {
