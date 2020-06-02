@@ -7,7 +7,9 @@ function App() {
   return (
     <Container>
       <h1>Fitness app</h1>
-      <Routes />
+      <div className="content">
+        <Routes />
+      </div>
     </Container>
   );
 }
