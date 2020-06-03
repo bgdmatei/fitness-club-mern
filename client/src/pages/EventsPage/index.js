@@ -37,32 +37,30 @@ export default function EventsPage(history) {
     eventData.append("description", description);
     eventData.append("date", date);
 
-    {
-      try {
-        if (
-          title !== "" &&
-          description !== "" &&
-          price !== "" &&
-          sport !== "" &&
-          date !== "" &&
-          thumbnail !== null
-        ) {
-          await api.post("/event", eventData, { headers: { user_id } });
-          setSuccess(true);
-          setTimeout(() => {
-            setSuccess(false);
-          }, 2000);
-        } else {
-          setError(true);
-          setTimeout(() => {
-            setError(false);
-          }, 2000);
-          console.log("Missing required message");
-        }
-      } catch (error) {
-        Promise.reject(error);
-        console.log(error);
+    try {
+      if (
+        title !== "" &&
+        description !== "" &&
+        price !== "" &&
+        sport !== "" &&
+        date !== "" &&
+        thumbnail !== null
+      ) {
+        await api.post("/event", eventData, { headers: { user_id } });
+        setSuccess(true);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 2000);
+      } else {
+        setError(true);
+        setTimeout(() => {
+          setError(false);
+        }, 2000);
+        console.log("Missing required message");
       }
+    } catch (error) {
+      Promise.reject(error);
+      console.log(error);
     }
   };
 
