@@ -42,7 +42,7 @@ export default function Register({ history }) {
       }
     } else {
       setError(true);
-      setErrorMessage("You need to fill all inputs");
+      setErrorMessage("Missing required fields!");
       setTimeout(() => {
         setError(false);
         setErrorMessage("");
@@ -54,42 +54,45 @@ export default function Register({ history }) {
     <Container>
       <h2>Register</h2>
       <Form onSubmit={handleSubmit}>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Input
-            type="text"
-            name="secondName"
-            id="secondName"
-            placeholder="Your last name"
-            onChange={(evt) => setLastName(evt.target.value)}
-          />
-        </FormGroup>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Input
-            type="text"
-            name="firstName"
-            id="firstName"
-            placeholder="Your first name"
-            onChange={(evt) => setFirstName(evt.target.value)}
-          />
-        </FormGroup>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Your email"
-            onChange={(evt) => setEmail(evt.target.value)}
-          />
-        </FormGroup>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Your password"
-            onChange={(evt) => setPassword(evt.target.value)}
-          />
-        </FormGroup>
+        <div className="input-group">
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Input
+              type="text"
+              name="secondName"
+              id="secondName"
+              placeholder="Your last name"
+              onChange={(evt) => setLastName(evt.target.value)}
+            />
+          </FormGroup>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Input
+              type="text"
+              name="firstName"
+              id="firstName"
+              placeholder="Your first name"
+              onChange={(evt) => setFirstName(evt.target.value)}
+            />
+          </FormGroup>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Your email"
+              onChange={(evt) => setEmail(evt.target.value)}
+            />
+          </FormGroup>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Your password"
+              onChange={(evt) => setPassword(evt.target.value)}
+            />
+          </FormGroup>
+        </div>
+
         <Button className="submit-btn">Submit</Button>
         <FormGroup>
           <Button
