@@ -8,19 +8,26 @@ import {
   Container,
   Label,
   Alert,
+  DropdownItem,
+  ButtonDropdown,
+  DropdownMenu,
+  DropdownToggle,
 } from "reactstrap";
 import cameraIcon from "../../assets/camera.png";
 import "./event.css";
 
-export default function EventsPage(history) {
+export default function EventsPage({ history }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
-  const [sport, setSport] = useState("");
+  const [sport, setSport] = useState("Sport");
   const [date, setDate] = useState("");
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [dropdownOpen, setOpen] = useState(false);
+
+  const toggle = () => setOpen(!dropdownOpen);
 
   const preview = useMemo(() => {
     return thumbnail ? URL.createObjectURL(thumbnail) : null;
@@ -64,6 +71,8 @@ export default function EventsPage(history) {
     }
   };
 
+  const sportEventHandler = (sport) => setSport(sport);
+
   return (
     <Container>
       <h1>Create an Event</h1>
@@ -87,16 +96,7 @@ export default function EventsPage(history) {
               />
             </Label>
           </FormGroup>
-          <FormGroup>
-            <Label>Sport:</Label>
-            <Input
-              id="sport"
-              type="text"
-              value={sport}
-              placeholder={"Sport name"}
-              onChange={(evt) => setSport(evt.target.value)}
-            />
-          </FormGroup>
+          <FormGroup></FormGroup>
           <FormGroup>
             <Label>Title:</Label>
             <Input
@@ -137,6 +137,23 @@ export default function EventsPage(history) {
               onChange={(evt) => setDate(evt.target.value)}
             />
           </FormGroup>
+          <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+            <Button id="caret" value={sport} disabled>
+              {sport}
+            </Button>
+            <DropdownToggle caret />
+            <DropdownMenu>
+              <DropdownItem onClick={() => sportEventHandler("Running")}>
+                Running
+              </DropdownItem>
+              <DropdownItem onClick={() => sportEventHandler("Football")}>
+                Football
+              </DropdownItem>
+              <DropdownItem onClick={() => sportEventHandler("Tennis")}>
+                Tennis
+              </DropdownItem>
+            </DropdownMenu>
+          </ButtonDropdown>
         </div>
         <FormGroup>
           <Button className="submit-btn" type="submit">
@@ -144,10 +161,7 @@ export default function EventsPage(history) {
           </Button>
         </FormGroup>
         <FormGroup>
-          <Button
-            className="secondary-btn"
-            onClick={() => history.push("/login")}
-          >
+          <Button className="secondary-btn" onClick={() => history.push("/")}>
             Dashboard
           </Button>
         </FormGroup>

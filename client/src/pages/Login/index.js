@@ -18,7 +18,7 @@ export default function Login({ history }) {
     try {
       if (userId) {
         localStorage.setItem("user", userId);
-        history.push("/dashboard");
+        history.push("/");
       } else {
         const { message } = response.data;
         setError(true);
@@ -28,7 +28,10 @@ export default function Login({ history }) {
           setErrorMessage("");
         }, 2000);
       }
-    } catch (error) {}
+    } catch (error) {
+      setError(true);
+      setErrorMessage("Error, the server returned an error!");
+    }
   };
 
   return (
@@ -69,7 +72,7 @@ export default function Login({ history }) {
       </Form>
       {error ? (
         <Alert className="event-validation" color="danger">
-          Missing required information
+          {errorMessage}
         </Alert>
       ) : (
         ""
