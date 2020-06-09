@@ -57,6 +57,7 @@ export default function EventsPage({ history }) {
         setSuccess(true);
         setTimeout(() => {
           setSuccess(false);
+          history.push("/");
         }, 2000);
       } else {
         setError(true);

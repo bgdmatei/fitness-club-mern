@@ -27,6 +27,11 @@ ul.events-list strong {
   color: #444;
 }
 
+.filter-panel {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media (max-width: 768px) {
   ul.events-list {
     grid-template-columns: 1fr;
