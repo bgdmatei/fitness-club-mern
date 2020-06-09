@@ -31,6 +31,10 @@ export default function Dashboard({ history }) {
 
     setEvents(response.data);
   };
+
+  const deleteEventHandler = async (eventId) => {
+    const deleteEvent = await api.delete(`/event/${eventId}`);
+  };
   return (
     <>
       <div className="filter-panel">
@@ -78,9 +82,21 @@ export default function Dashboard({ history }) {
       <ul className="events-list">
         {events.map((event) => (
           <li key={event._id}>
-            <header
-              style={{ backgroundImage: `url(${event.thumbnail_url})` }}
-            />
+            <header style={{ backgroundImage: `url(${event.thumbnail_url})` }}>
+              {event.user === user_id ? (
+                <div>
+                  <Button
+                    color="danger"
+                    size="sm"
+                    onClick={() => deleteEventHandler(event._id)}
+                  >
+                    Delete
+                  </Button>
+                </div>
+              ) : (
+                ""
+              )}
+            </header>
             <strong>{event.title}</strong>
             <span>Event date:{moment(event.date).format("l")}</span>
             <span>Price:£{parseFloat(event.price).toFixed(2)}</span>

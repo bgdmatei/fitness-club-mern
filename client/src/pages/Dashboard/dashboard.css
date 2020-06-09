@@ -32,6 +32,11 @@ ul.events-list strong {
   justify-content: space-between;
 }
 
+ul.events-list header div {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 @media (max-width: 768px) {
   ul.events-list {
     grid-template-columns: 1fr;
