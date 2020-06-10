@@ -10,7 +10,6 @@ ul.events-list {
 ul.events-list li {
   display: flex;
   flex-direction: column;
-  margin-top: 16px;
 }
 
 ul.events-list li header {
@@ -27,9 +26,10 @@ ul.events-list strong {
   color: #444;
 }
 
-.filter-panel {
+div.filter-panel {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 50px;
 }
 
 ul.events-list header div {
