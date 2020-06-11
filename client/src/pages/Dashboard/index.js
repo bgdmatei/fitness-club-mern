@@ -30,10 +30,14 @@ export default function Dashboard({ history }) {
   };
 
   const getEvents = async (filter) => {
-    const url = filter ? `/dashboard/${filter}` : "/dashboard";
-    const response = await api.get(url, { headers: { user: user } });
+    try {
+      const url = filter ? `/dashboard/${filter}` : "/dashboard";
+      const response = await api.get(url, { headers: { user: user } });
 
-    setEvents(response.data);
+      setEvents(response.data.events);
+    } catch (error) {
+      history.push("/login");
+    }
   };
 
   const deleteEventHandler = async (eventId) => {
