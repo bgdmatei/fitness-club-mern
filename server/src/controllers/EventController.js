@@ -2,39 +2,51 @@ const Event = require("../models/Event");
 const User = require("../models/User");
 
 module.exports = {
-  async createEvent(req, res) {
-    const { title, description, price, sport, date } = req.body;
-    const { user_id } = req.headers;
-    const { filename } = req.file;
+  createEvent(req, res) {
+    jwt.verify(req.token, "secret", async (err, authData) => {
+      if (err) {
+        res.statusCode(401);
+      } else {
+        const { title, description, price, sport, date } = req.body;
 
-    const user = await User.findById(user_id);
+        const { filename } = req.file;
 
-    if (!user) {
-      return res.status(400).json({ message: "User does not exist" });
-    }
-    try {
-      const event = await Event.create({
-        title,
-        description,
-        sport,
-        price: parseFloat(price),
-        user: user_id,
-        thumbnail: filename,
-        date,
-      });
-      return res.json(event);
-    } catch (error) {
-      return res.status(400).json({ message: error });
-    }
+        const user = await User.findById(authData.user._id);
+
+        if (!user) {
+          return res.status(400).json({ message: "User does not exist" });
+        }
+        try {
+          const event = await Event.create({
+            title,
+            description,
+            sport,
+            price: parseFloat(price),
+            user: authData.user._id,
+            thumbnail: filename,
+            date,
+          });
+          return res.json(event);
+        } catch (error) {
+          return res.status(400).json({ message: error });
+        }
+      }
+    });
   },
 
-  async delete(req, res) {
-    const { eventId } = req.params;
-    try {
-      await Event.findByIdAndDelete(eventId);
-      return res.status(204).send();
-    } catch (error) {
-      return res.status(400).json({ message: "Couldn't find event!" });
-    }
+  delete(req, res) {
+    jwt.verify(req.token, "secret", async (err, authData) => {
+      if (err) {
+        res.statusCode(401);
+      } else {
+        const { eventId } = req.params;
+        try {
+          await Event.findByIdAndDelete(eventId);
+          return res.status(204).send();
+        } catch (error) {
+          return res.status(400).json({ message: "Couldn't find event!" });
+        }
+      }
+    });
   },
 };

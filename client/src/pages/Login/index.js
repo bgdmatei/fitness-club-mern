@@ -10,7 +10,6 @@ export default function Login({ history }) {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    console.log("result of the submit", email, password);
 
     const response = await api.post("/login", { email, password });
     const user_id = response.data.user_id || false;

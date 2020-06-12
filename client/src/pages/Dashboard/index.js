@@ -22,11 +22,15 @@ export default function Dashboard({ history }) {
   };
 
   const myEventsHandler = async () => {
-    setRSelected("myevents");
-    const response = await api.get("/user/events", {
-      headers: { user: user },
-    });
-    setEvents(response.data);
+    try {
+      setRSelected("myevents");
+      const response = await api.get("/user/events", {
+        headers: { user: user },
+      });
+      setEvents(response.data.events);
+    } catch (error) {
+      history.push("/login");
+    }
   };
 
   const getEvents = async (filter) => {
@@ -42,7 +46,7 @@ export default function Dashboard({ history }) {
 
   const deleteEventHandler = async (eventId) => {
     try {
-      await api.delete(`/event/${eventId}`);
+      await api.delete(`/event/${eventId}`, { headers: { user: user } });
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
