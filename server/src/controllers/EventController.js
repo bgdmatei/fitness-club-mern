@@ -1,5 +1,6 @@
 const Event = require("../models/Event");
 const User = require("../models/User");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   createEvent(req, res) {
