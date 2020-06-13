@@ -3,6 +3,7 @@ import api from "../../services/api";
 import moment from "moment";
 import "./dashboard.css";
 import { Button, ButtonGroup, Alert } from "reactstrap";
+import socketio from "socket.io-client";
 
 export default function Dashboard({ history }) {
   const [events, setEvents] = useState([]);
@@ -14,6 +15,10 @@ export default function Dashboard({ history }) {
 
   useEffect(() => {
     getEvents();
+  }, []);
+
+  useEffect(() => {
+    const socket = socketio("http://localhost:8000", { user: { user_id } });
   }, []);
 
   const filterHandler = (query) => {
