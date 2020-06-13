@@ -59,6 +59,12 @@ export default function Dashboard({ history }) {
       }, 2000);
     }
   };
+
+  const logoutHandler = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("user_id");
+    history.push("/login");
+  };
   return (
     <>
       <div className="filter-panel">
@@ -99,9 +105,14 @@ export default function Dashboard({ history }) {
             Tennis
           </Button>
         </ButtonGroup>
-        <Button color="secondary" onClick={() => history.push("events")}>
-          Events
-        </Button>
+        <ButtonGroup>
+          <Button color="secondary" onClick={() => history.push("events")}>
+            Events
+          </Button>
+          <Button color="danger" onClick={logoutHandler}>
+            Logout
+          </Button>
+        </ButtonGroup>
       </div>
       <ul className="events-list">
         {events.map((event) => (
