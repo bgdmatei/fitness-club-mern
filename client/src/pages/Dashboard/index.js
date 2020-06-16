@@ -80,7 +80,7 @@ export default function Dashboard({ history }) {
 
   const registrationRequestHandler = async (event) => {
     try {
-      await api.post(`/register/${event.id}`, {}, { headers: { user } });
+      await api.post(`/registration/${event.id}`, {}, { headers: { user } });
       setSuccess(true);
       setMessageHandler(
         `You subscribed successfully to the ${event.title} event!`
@@ -181,14 +181,14 @@ export default function Dashboard({ history }) {
       </ul>
       {error ? (
         <Alert className="event-validation" color="danger">
-          Error when deleting event!
+          {messageHandler}
         </Alert>
       ) : (
         ""
       )}
       {success ? (
         <Alert className="event-validation" color="success">
-          Event was deleted successfully!
+          {messageHandler}
         </Alert>
       ) : (
         ""
