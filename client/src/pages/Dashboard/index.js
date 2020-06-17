@@ -20,7 +20,9 @@ export default function Dashboard({ history }) {
   }, []);
 
   useEffect(() => {
-    const socket = socketio("http://localhost:8000", { user: { user_id } });
+    const socket = socketio("http://localhost:8000", {
+      query: { user: user_id },
+    });
     socket.on("registration_request", (data) => console.log(data));
   }, []);
 
