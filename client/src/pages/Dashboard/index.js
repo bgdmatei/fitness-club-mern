@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import api from "../../services/api";
 import moment from "moment";
 import "./dashboard.css";
@@ -14,17 +14,22 @@ export default function Dashboard({ history }) {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [messageHandler, setMessageHandler] = useState("");
+  const [eventsRequest, setEventsRequest] = useState([]);
 
   useEffect(() => {
     getEvents();
   }, []);
 
+  const socket = useMemo(
+    () => socketio("http://localhost:8000", { query: { user: user_id } }),
+    [user_id]
+  );
+
   useEffect(() => {
-    const socket = socketio("http://localhost:8000", {
-      query: { user: user_id },
-    });
-    socket.on("registration_request", (data) => console.log(data));
-  }, []);
+    socket.on("registration_request", (data) =>
+      setEventsRequest([...eventsRequest, data])
+    );
+  }, [eventsRequest, socket]);
 
   const filterHandler = (query) => {
     setRSelected(query);
