@@ -108,6 +108,26 @@ export default function Dashboard({ history }) {
   };
   return (
     <>
+      <ul className="notifications">
+        {eventsRequest.map((request) => {
+          return (
+            <li key={request._id}>
+              <div>
+                <strong>{request.user.email}</strong> is requesting to subscribe
+                to <strong>{request.event.title}</strong> event!
+              </div>
+              <ButtonGroup>
+                <Button color="success" onClick={() => {}}>
+                  Accept
+                </Button>
+                <Button color="danger" onClick={() => {}}>
+                  Decline
+                </Button>
+              </ButtonGroup>
+            </li>
+          );
+        })}
+      </ul>
       <div className="filter-panel">
         <ButtonGroup>
           <Button
