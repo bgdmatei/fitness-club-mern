@@ -8,7 +8,7 @@ export const ContextWrapper = (props) => {
     if (user) return true;
     return false;
   };
-  const [isLoggedIn, setIsLoggedIn] = useState(defaultValueHandler);
+  const [isLoggedIn, setIsLoggedIn] = useState(defaultValueHandler());
 
   const user = {
     isLoggedIn,

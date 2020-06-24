@@ -12,13 +12,16 @@ const TopNav = () => {
   const logoutHandler = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("user_id");
+    setIsLoggedIn(false);
   };
 
   return isLoggedIn ? (
     <div>
       <Navbar color="faded" light>
         <NavbarToggler onClick={toggleNavbar} />
-        <Link to="/login">Logout</Link>
+        <Link to="/login" onClick={logoutHandler}>
+          Logout
+        </Link>
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
