@@ -79,12 +79,6 @@ export default function Dashboard({ history }) {
     }
   };
 
-  const logoutHandler = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("user_id");
-    history.push("/login");
-  };
-
   const registrationRequestHandler = async (event) => {
     try {
       await api.post(`/registration/${event.id}`, {}, { headers: { user } });
@@ -164,14 +158,6 @@ export default function Dashboard({ history }) {
             active={rSelected === "Tennis"}
           >
             Tennis
-          </Button>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Button color="secondary" onClick={() => history.push("events")}>
-            Events
-          </Button>
-          <Button color="danger" onClick={logoutHandler}>
-            Logout
           </Button>
         </ButtonGroup>
       </div>
