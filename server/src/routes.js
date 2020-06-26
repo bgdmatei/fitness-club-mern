@@ -30,10 +30,12 @@ routes.post(
 );
 routes.post(
   "/registration/:registration_id/approvals",
+  verifyToken,
   ApprovalController.approval
 );
 routes.post(
   "/registration/:registration_id/rejections",
+  verifyToken,
   RejectionController.rejection
 );
 

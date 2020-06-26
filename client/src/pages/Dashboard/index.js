@@ -111,6 +111,18 @@ export default function Dashboard({ history }) {
       }, 2000);
     }
   };
+
+  const acceptEventHandler = async (eventId) => {
+    try {
+      await api.post(
+        `/registration/${eventId}/approvals`,
+        {},
+        { headers: { user } }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <ul className="notifications">
@@ -122,7 +134,10 @@ export default function Dashboard({ history }) {
                 to <strong>{request.event.title}</strong> event!
               </div>
               <ButtonGroup>
-                <Button color="success" onClick={() => {}}>
+                <Button
+                  color="success"
+                  onClick={acceptEventHandler(request._id)}
+                >
                   Accept
                 </Button>
                 <Button color="danger" onClick={() => {}}>
