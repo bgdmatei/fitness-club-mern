@@ -24,6 +24,8 @@ export default function Dashboard({ history }) {
   const [messageHandler, setMessageHandler] = useState("");
   const [eventsRequest, setEventsRequest] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [eventRequestMessage, setEventRequestMessage] = useState("");
+  const [eventRequestSuccess, setEventRequestSuccess] = useState(false);
 
   const toggle = () => setDropdownOpen(!dropdownOpen);
 
@@ -119,10 +121,42 @@ export default function Dashboard({ history }) {
         {},
         { headers: { user } }
       );
+      setEventRequestSuccess(true);
+      setEventRequestMessage("Event approved successfully!");
+      removeNotificationFromDashboard(eventId);
+      setTimeout(() => {
+        setEventRequestSuccess(false);
+        setEventRequestMessage("");
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const rejectEventHandler = async (eventId) => {
+    try {
+      await api.post(
+        `/registration/${eventId}/rejections`,
+        {},
+        { headers: { user } }
+      );
+      setEventRequestSuccess(true);
+      setEventRequestMessage("Event declined successfully!");
+      removeNotificationFromDashboard(eventId);
+      setTimeout(() => {
+        setEventRequestSuccess(false);
+        setEventRequestMessage("");
+      }, 2000);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeNotificationFromDashboard = (eventId) => {
+    const newEvent = eventsRequest.filter((event) => event._id !== eventId);
+    setEventsRequest(newEvent);
+  };
+
   return (
     <>
       <ul className="notifications">
@@ -136,11 +170,14 @@ export default function Dashboard({ history }) {
               <ButtonGroup>
                 <Button
                   color="success"
-                  onClick={acceptEventHandler(request._id)}
+                  onClick={() => acceptEventHandler(request._id)}
                 >
                   Accept
                 </Button>
-                <Button color="danger" onClick={() => {}}>
+                <Button
+                  color="danger"
+                  onClick={() => rejectEventHandler(request._id)}
+                >
                   Decline
                 </Button>
               </ButtonGroup>
@@ -148,6 +185,11 @@ export default function Dashboard({ history }) {
           );
         })}
       </ul>
+      {eventRequestSuccess ? (
+        <Alert color="success"> {eventRequestMessage}</Alert>
+      ) : (
+        ""
+      )}
       <div className="filter-panel">
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
           <DropdownToggle color="primary" caret>
