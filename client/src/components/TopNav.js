@@ -30,6 +30,9 @@ const TopNav = () => {
             <NavItem>
               <Link to="/">Dashboard</Link>
             </NavItem>
+            <NavItem>
+              <Link to="/myregistrations">My Registrations</Link>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
