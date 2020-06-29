@@ -14,9 +14,8 @@ body,
 }
 
 body {
-  background: rgba(0, 0, 0, 0.5) url("./assets/background.jpg") no-repeat;
+  background: rgba(0, 0, 0, 0.5) url("./assets/bg.jpg");
   background-size: cover;
-  -webkit-font-smoothing: antialiased !important;
 }
 
 body,

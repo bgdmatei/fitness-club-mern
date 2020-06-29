@@ -8,6 +8,8 @@ label#thumbnail {
   justify-content: center;
   align-items: center;
   height: 120px;
+  border: 1px solid #dedede;
+  border-radius: 8px;
 }
 
 label#thumbnail input {
@@ -23,4 +25,12 @@ label#thumbnail.has-thumbnail img {
 
 .container > .event-validation {
   margin-top: 12px;
+}
+
+.input-group {
+  text-align: center;
+}
+
+#caret {
+  width: 155px;
 }

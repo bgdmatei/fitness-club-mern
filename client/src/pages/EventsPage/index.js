@@ -144,7 +144,7 @@ export default function EventsPage({ history }) {
           </FormGroup>
           <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
             <Button id="caret" value={sport} disabled>
-              {sport}
+              <strong>{sport}</strong>
             </Button>
             <DropdownToggle caret />
             <DropdownMenu>
