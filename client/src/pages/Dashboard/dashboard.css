@@ -10,6 +10,9 @@ ul.events-list {
 ul.events-list li {
   display: flex;
   flex-direction: column;
+  border: 1px solid #dedede;
+  padding: 16px;
+  border-radius: 8px;
 }
 
 ul.events-list li header {
