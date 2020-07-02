@@ -249,9 +249,9 @@ export default function Dashboard({ history }) {
               )}
             </header>
             <strong>{event.title}</strong>
-            <span>Event date:{moment(event.date).format("l")}</span>
-            <span>Price:£{parseFloat(event.price).toFixed(2)}</span>
-            <span>Description:{event.description}</span>
+            <span>Event date: {moment(event.date).format("l")}</span>
+            <span>Price: £{parseFloat(event.price).toFixed(2)}</span>
+            <span>Description: {event.description}</span>
             <br />
             <Button
               color="primary"
