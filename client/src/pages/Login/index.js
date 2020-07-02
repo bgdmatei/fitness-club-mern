@@ -63,7 +63,7 @@ export default function Login({ history }) {
           </FormGroup>
         </div>
         <FormGroup>
-          <Button className="submit-btn">Submit</Button>
+          <Button className="submit-btn">Login</Button>
         </FormGroup>
         <FormGroup>
           <Button

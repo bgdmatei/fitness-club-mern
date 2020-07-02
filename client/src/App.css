@@ -41,7 +41,7 @@ button {
 
 .content {
   width: 80%;
-  opacity: 0.8;
+  opacity: 0.9;
   background: #fff;
   margin-top: 50px;
   border-radius: 4px;
@@ -65,6 +65,7 @@ button {
   background: #f05a5b;
   color: #fff;
   cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 .content button.submit-btn:hover {
@@ -83,7 +84,6 @@ button {
   background: #337ab7;
   color: #fff;
   cursor: pointer;
-  margin-top: 12px;
 }
 
 .content button.secondary-btn:hover {
@@ -94,5 +94,8 @@ button {
 .content div.input-group {
   display: flex;
   flex-direction: column;
+}
+
+.content div.input-group input {
   margin-bottom: 1rem;
 }
