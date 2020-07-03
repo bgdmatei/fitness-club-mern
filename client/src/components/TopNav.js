@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../user-context";
-import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from "reactstrap";
+import { Navbar, NavLink, Nav, NavItem } from "reactstrap";
 
 const TopNav = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
@@ -18,23 +18,20 @@ const TopNav = () => {
   return isLoggedIn ? (
     <div>
       <Navbar color="faded" light>
-        <NavbarToggler onClick={toggleNavbar} />
+        <Nav>
+          <NavItem>
+            <NavLink href="/events">Events</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/">Dashboard</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/myregistrations">My Registrations</NavLink>
+          </NavItem>
+        </Nav>
         <Link to="/login" onClick={logoutHandler}>
           Logout
         </Link>
-        <Collapse isOpen={!collapsed} navbar>
-          <Nav navbar>
-            <NavItem>
-              <Link to="/events">Events</Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/">Dashboard</Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/myregistrations">My Registrations</Link>
-            </NavItem>
-          </Nav>
-        </Collapse>
       </Navbar>
     </div>
   ) : (
