@@ -192,7 +192,7 @@ export default function Dashboard({ history }) {
       )}
       <div className="filter-panel">
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-          <DropdownToggle color="primary" caret>
+          <DropdownToggle color="primary" caret size="sm">
             Filter
           </DropdownToggle>
           <DropdownMenu>
@@ -249,9 +249,15 @@ export default function Dashboard({ history }) {
               )}
             </header>
             <strong>{event.title}</strong>
-            <span>Event date: {moment(event.date).format("l")}</span>
-            <span>Price: £{parseFloat(event.price).toFixed(2)}</span>
-            <span>Description: {event.description}</span>
+            <span>
+              <b>Event date:</b> {moment(event.date).format("l")}
+            </span>
+            <span>
+              <b>Price:</b> £{parseFloat(event.price).toFixed(2)}
+            </span>
+            <span>
+              <b>Description:</b> {event.description}
+            </span>
             <br />
             <Button
               color="primary"

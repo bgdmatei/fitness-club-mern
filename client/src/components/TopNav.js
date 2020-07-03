@@ -5,9 +5,7 @@ import { Navbar, NavLink, Nav, NavItem } from "reactstrap";
 
 const TopNav = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
-  const [collapsed, setCollapsed] = useState(true);
-
-  const toggleNavbar = () => setCollapsed(!collapsed);
+  const [rSelected, setRSelected] = useState(null);
 
   const logoutHandler = () => {
     localStorage.removeItem("user");
@@ -29,9 +27,9 @@ const TopNav = () => {
             <NavLink href="/myregistrations">My Registrations</NavLink>
           </NavItem>
         </Nav>
-        <Link to="/login" onClick={logoutHandler}>
+        <NavLink href="/login" onClick={logoutHandler}>
           Logout
-        </Link>
+        </NavLink>
       </Navbar>
     </div>
   ) : (

@@ -27,12 +27,14 @@ ul.events-list strong {
   margin-top: 12px;
   font-size: 24px;
   color: #444;
+  text-align: center;
 }
 
 div.filter-panel {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row-reverse;
   margin-bottom: 50px;
+  margin-right: 1.5rem;
 }
 
 ul.events-list header div {
