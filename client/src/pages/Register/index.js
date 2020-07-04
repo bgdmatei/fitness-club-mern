@@ -60,7 +60,7 @@ export default function Register({ history }) {
       <h2>Register</h2>
       <Form onSubmit={handleSubmit}>
         <div className="input-group">
-          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <FormGroup className="mb-2  mb-sm-0">
             <Input
               type="text"
               name="secondName"
@@ -69,7 +69,7 @@ export default function Register({ history }) {
               onChange={(evt) => setLastName(evt.target.value)}
             />
           </FormGroup>
-          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <FormGroup className="mb-2  mb-sm-0">
             <Input
               type="text"
               name="firstName"
@@ -78,7 +78,7 @@ export default function Register({ history }) {
               onChange={(evt) => setFirstName(evt.target.value)}
             />
           </FormGroup>
-          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <FormGroup className="mb-2  mb-sm-0">
             <Input
               type="email"
               name="email"
@@ -87,7 +87,7 @@ export default function Register({ history }) {
               onChange={(evt) => setEmail(evt.target.value)}
             />
           </FormGroup>
-          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <FormGroup className="mb-2  mb-sm-0">
             <Input
               type="password"
               name="password"

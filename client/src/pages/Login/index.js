@@ -43,7 +43,7 @@ export default function Login({ history }) {
       <h2>Login</h2>
       <Form onSubmit={handleSubmit}>
         <div className="input-group">
-          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <FormGroup className="mb-2  mb-sm-0">
             <Input
               type="email"
               name="email"
@@ -52,7 +52,7 @@ export default function Login({ history }) {
               onChange={(evt) => setEmail(evt.target.value)}
             />
           </FormGroup>
-          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <FormGroup className="mb-2  mb-sm-0">
             <Input
               type="password"
               name="password"
@@ -63,9 +63,8 @@ export default function Login({ history }) {
           </FormGroup>
         </div>
         <FormGroup>
-          <Button className="submit-btn">Login</Button>
-        </FormGroup>
-        <FormGroup>
+          <Button className="submit-btn">Submit</Button>
+
           <Button
             className="secondary-btn"
             onClick={() => history.push("/register")}

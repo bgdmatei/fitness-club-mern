@@ -27,10 +27,11 @@ label#thumbnail.has-thumbnail img {
   margin-top: 12px;
 }
 
-.input-group {
-  text-align: center;
-}
-
 #caret {
   width: 155px;
+  margin-bottom: 1rem;
+}
+
+#caret-dropdown {
+  margin-bottom: 1rem;
 }

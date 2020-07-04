@@ -248,7 +248,9 @@ export default function Dashboard({ history }) {
                 ""
               )}
             </header>
-            <strong>{event.title}</strong>
+            <strong>
+              {event.sport} - {event.title}
+            </strong>
             <span>
               <b>Event date:</b> {moment(event.date).format("l")}
             </span>

@@ -1,11 +1,10 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+
 import { UserContext } from "../user-context";
 import { Navbar, NavLink, Nav, NavItem } from "reactstrap";
 
 const TopNav = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
-  const [rSelected, setRSelected] = useState(null);
 
   const logoutHandler = () => {
     localStorage.removeItem("user");

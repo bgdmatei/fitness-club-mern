@@ -146,7 +146,7 @@ export default function EventsPage({ history }) {
             <Button id="caret" value={sport} disabled>
               <strong>{sport}</strong>
             </Button>
-            <DropdownToggle caret />
+            <DropdownToggle caret id="caret-dropdown" />
             <DropdownMenu>
               <DropdownItem onClick={() => sportEventHandler("Running")}>
                 Running
@@ -164,8 +164,7 @@ export default function EventsPage({ history }) {
           <Button className="submit-btn" type="submit">
             Create event
           </Button>
-        </FormGroup>
-        <FormGroup>
+
           <Button className="secondary-btn" onClick={() => history.push("/")}>
             Dashboard
           </Button>
